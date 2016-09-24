@@ -44,7 +44,19 @@ function ShoppingListCheckOffService() {
     {
       name: 'chips',
       quantity: 20
-    }
+    },
+    {
+      name: 'banana',
+      quantity: 5
+    },
+    {
+      name: 'orange',
+      quantity: 3
+    },
+    {
+      name: 'apples',
+      quantity: 2
+    },
   ];
   // List of cart items
   var cart = [];
