@@ -13,3 +13,7 @@ li > button {
 button > span {
   color: green;
 }
+
+.span-red {
+  color: red;
+}

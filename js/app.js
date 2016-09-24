@@ -16,10 +16,6 @@ function ToBuyShoppingController(ShoppingListCheckOffService) {
       list.buyItem = function (item) {
         ShoppingListCheckOffService.buyItem(item);
       };
-
-      list.isEmpty = function () {
-        return !(list.items.length);
-      };
 }
 
 AlreadyBoughtShoppingController.$inject = ['ShoppingListCheckOffService'];
@@ -28,8 +24,8 @@ function AlreadyBoughtShoppingController(ShoppingListCheckOffService) {
 
       cart.items = ShoppingListCheckOffService.getCartItems();
 
-      cart.isEmpty = function () {
-        return !(cart.items.length);
+      cart.removeItem = function (item) {
+        ShoppingListCheckOffService.removeItem(item);
       };
 }
 
@@ -62,8 +58,11 @@ function ShoppingListCheckOffService() {
   var cart = [];
 
   service.buyItem = function (item) {
-    cart.push(item);
-    items.splice(items.indexOf(item),1);
+    cart.push( items.splice(items.indexOf(item), 1)[0] );
+  };
+
+  service.removeItem = function (item) {
+    items.push( cart.splice(cart.indexOf(item), 1)[0] );
   };
 
   service.getListItems = function () {
